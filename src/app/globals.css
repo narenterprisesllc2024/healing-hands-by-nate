@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f5f1ea;
+  --fg: #2a2622;
+  --muted: #6b6259;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@layer base {
+  body {
+    @apply font-sans;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif tracking-tightest text-stone-900;
+  }
+  a {
+    @apply transition-colors;
+  }
+  ::selection {
+    background: #b8654a;
+    color: #faf7f1;
+  }
+}
+
+@layer components {
+  .container-wide {
+    @apply mx-auto w-full max-w-wide px-6 lg:px-10;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-medium tracking-wide transition;
+  }
+  .btn-primary {
+    @apply btn bg-stone-900 text-cream-50 hover:bg-bronze-600;
+  }
+  .btn-secondary {
+    @apply btn border border-stone-900/15 bg-transparent text-stone-900 hover:bg-stone-900 hover:text-cream-50;
+  }
+  .eyebrow {
+    @apply font-sans text-xs uppercase tracking-[0.18em] text-bronze-500;
+  }
+  .prose-warm {
+    @apply max-w-prose space-y-5 text-stone-700;
+  }
+  .prose-warm p {
+    @apply leading-relaxed;
+  }
+  .display {
+    @apply font-serif text-4xl leading-[1.05] tracking-tightest md:text-5xl lg:text-6xl;
+  }
+  .display-xl {
+    @apply font-serif text-5xl leading-[1.02] tracking-tightest md:text-7xl lg:text-[5.5rem];
+  }
+  .prose-blog h2 {
+    @apply mt-10 font-serif text-2xl tracking-tightest text-stone-900 md:text-3xl;
+  }
+  .prose-blog h3 {
+    @apply mt-8 font-serif text-xl tracking-tightest text-stone-900;
+  }
+  .prose-blog p {
+    @apply mt-5 leading-relaxed;
+  }
+  .prose-blog ul,
+  .prose-blog ol {
+    @apply mt-5 space-y-2 pl-5;
+  }
+  .prose-blog ul {
+    @apply list-disc marker:text-bronze-500;
+  }
+  .prose-blog ol {
+    @apply list-decimal marker:text-bronze-500;
+  }
+  .prose-blog a {
+    @apply text-bronze-600 underline underline-offset-4 hover:text-bronze-700;
+  }
+  .prose-blog strong {
+    @apply text-stone-900;
+  }
+  .prose-blog em {
+    @apply italic;
+  }
+}
