@@ -1,14 +1,21 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { appendSubmission, relayWebhook } from "@/lib/store";
+import { mauticCapture } from "@/lib/mautic";
+import { resendSend, neckResetWelcomeEmail } from "@/lib/email";
 
 export const runtime = "nodejs";
 
 const Schema = z.object({
   email: z.string().email(),
   source: z.string().max(80).optional(),
-  honeypot: z.string().optional()
+  honeypot: z.string().optional(),
+  firstname: z.string().max(80).optional(),
+  lastname: z.string().max(80).optional(),
+  phone: z.string().max(40).optional(),
 });
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://healinghandsbynate.mysoviai.com";
 
 export async function POST(req: Request) {
   let body: unknown;
@@ -27,19 +34,45 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true, message: "Thanks." });
   }
 
+  const { email, source, firstname, lastname, phone } = parsed.data;
+
   const entry = await appendSubmission({
     type: "subscribe",
-    email: parsed.data.email,
-    source: parsed.data.source || "newsletter"
+    email,
+    name: firstname,
+    phone,
+    source: source || "newsletter",
   });
 
   await relayWebhook(process.env.NEWSLETTER_WEBHOOK_URL, entry);
 
-  const isLeadMagnet = parsed.data.source === "neck-reset";
+  const mautic = await mauticCapture({
+    email,
+    firstname,
+    lastname,
+    phone,
+    tags: source ? [`source:${source}`] : undefined,
+  });
+
+  if (source === "neck-reset") {
+    const tmpl = neckResetWelcomeEmail(SITE_URL);
+    const sendResult = await resendSend({
+      to: email,
+      subject: tmpl.subject,
+      html: tmpl.html,
+      replyTo: "narenterprisesllc2024@gmail.com",
+    });
+    if (!sendResult.ok && !sendResult.skipped) {
+      console.error("[subscribe] welcome email send failed for", email);
+    }
+  }
+
+  const isLeadMagnet = source === "neck-reset";
   return NextResponse.json({
     ok: true,
+    mautic: mautic.ok,
     message: isLeadMagnet
       ? "On its way — check your inbox in a few minutes."
-      : "You're in. Welcome."
+      : "You're in. Welcome.",
   });
 }
