@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { appendSubmission, relayWebhook } from "@/lib/store";
 import { mauticCapture } from "@/lib/mautic";
 import { resendSend, neckResetWelcomeEmail } from "@/lib/email";
 
@@ -35,16 +34,6 @@ export async function POST(req: Request) {
   }
 
   const { email, source, firstname, lastname, phone } = parsed.data;
-
-  const entry = await appendSubmission({
-    type: "subscribe",
-    email,
-    name: firstname,
-    phone,
-    source: source || "newsletter",
-  });
-
-  await relayWebhook(process.env.NEWSLETTER_WEBHOOK_URL, entry);
 
   const mautic = await mauticCapture({
     email,
