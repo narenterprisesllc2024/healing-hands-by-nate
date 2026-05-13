@@ -53,7 +53,7 @@ export function neckResetWelcomeEmail(siteUrl: string): { subject: string; html:
   <p style="line-height:1.6;margin:0 0 16px;">Hey,</p>
   <p style="line-height:1.6;margin:0 0 16px;">Thanks for grabbing the guide. Here it is:</p>
   <p style="margin:24px 0;">
-    <a href="${pdfUrl}" style="display:inline-block;background:#7c5c3b;color:#ffffff;padding:14px 28px;border-radius:32px;text-decoration:none;font-weight:500;">Download the PDF</a>
+    <a href="${pdfUrl}" download="Neck-Reset-Healing-Hands-By-Nate.pdf" style="display:inline-block;background:#7c5c3b;color:#ffffff;padding:14px 28px;border-radius:32px;text-decoration:none;font-weight:500;">Download the PDF</a>
   </p>
   <p style="line-height:1.6;margin:0 0 16px;">Five minutes, no equipment, real relief. Do it once and pay attention to how your neck feels 30 minutes later. That's the test.</p>
   <p style="line-height:1.6;margin:0 0 16px;">One note: this works best when you're not actively fighting through a flare. If you're in the worst part of it, hit me up directly. Sometimes hands-on is the right call before self-care.</p>
