@@ -62,6 +62,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema()) }}
         />
+        {/* Umami analytics — privacy-first, self-hosted on umami.mysoviai.com */}
+        <script
+          defer
+          src="https://umami.mysoviai.com/script.js"
+          data-website-id="7865b4c2-420b-4a66-bfd0-8c86ed8b07e0"
+          data-domains="healinghandsbynate.com"
+        />
       </head>
       <body className="bg-cream-100 text-stone-900">
         <Header />
