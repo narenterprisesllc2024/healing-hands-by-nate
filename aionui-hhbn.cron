@@ -1,0 +1,27 @@
+# Healing Hands By Nate — auto-publish + Friday newsletter
+#
+# Install (requires root):
+#   sudo cp /opt/aionui/projects/healing-hands-by-nate/aionui-hhbn.cron \
+#           /etc/cron.d/aionui-hhbn && \
+#   sudo chown root:root /etc/cron.d/aionui-hhbn && \
+#   sudo chmod 0644 /etc/cron.d/aionui-hhbn
+#
+# Logs:
+#   /opt/aionui/projects/healing-hands-by-nate/logs/auto-blog.log
+#   /opt/aionui/projects/healing-hands-by-nate/logs/auto-newsletter.log
+#   /opt/aionui/projects/healing-hands-by-nate/logs/newsletter-send.log
+#
+# Pause: comment out the line(s) and run `sudo systemctl reload cron`
+# (or just delete the file).
+
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+MAILTO=""
+TZ=America/Chicago
+
+# Blog: Tuesday + Friday at 6:00 AM Central
+0 6 * * 2 aionui /opt/aionui/projects/healing-hands-by-nate/scripts/auto-blog.sh
+0 6 * * 5 aionui /opt/aionui/projects/healing-hands-by-nate/scripts/auto-blog.sh
+
+# Newsletter: every Friday at 9:00 AM Central
+0 9 * * 5 aionui /opt/aionui/projects/healing-hands-by-nate/scripts/auto-newsletter.sh
