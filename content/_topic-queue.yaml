@@ -1,0 +1,163 @@
+# Healing Hands By Nate — blog topic queue
+# Generator: /opt/aionui/.claude/skills/healing-hands-blog-generator
+#
+# Cadence: 2-3 articles per week.
+# Status values: pending | drafting | drafted | published | skipped
+# Drafts land in content/blog/_drafts/, get reviewed, then moved to content/blog/
+# (or auto-published once Nate is confident in voice — typically after 4-5 reviewed posts).
+#
+# Geo anchors are Union, MO (15 S Oak St, Union 63084) + Franklin/Crawford/Gasconade/Warren
+# counties. Surrounding towns to weave in: Washington, Sullivan, Pacific, St. Clair, Cuba,
+# New Haven, Beaufort, Robertsville, Gerald, Owensville, St. James, Rolla.
+#
+# Every post gets the BlogPostCTA footer auto-injected at render time (NAP + hours + Vagaro
+# button) — DO NOT manually add address/phone/booking link in the markdown body.
+#
+# Voice: confident, plainspoken, anti-corporate, structured with clear sections. Match
+# content/blog/why-your-neck-keeps-hurting.md as the reference.
+
+topics:
+  - slug: why-your-lower-back-tightens-after-mowing
+    title: "Why Your Lower Back Locks Up After Mowing (and What Fixes It)"
+    keyword_cluster: ["low back pain", "mowing", "lawn care", "Missouri spring"]
+    brief: "Seasonal angle — May through October in Missouri, anyone who mows ends up with the same locked-up low back. Explain why (the rotational + vibration combo), what's actually tightening (QL, glute med, hip flexors), and the 10-minute fix sequence."
+    target_intent: informational
+    local_anchor: "Union and surrounding Franklin County — most of our clients have an acre or more to mow."
+    status: drafted
+    drafted_at: "2026-05-22T15:34:00Z"
+    draft_path: "content/blog/_drafts/why-your-lower-back-tightens-after-mowing.md"
+
+  - slug: the-desk-job-shoulder-knot-3-step-fix
+    title: "The Desk-Job Shoulder Knot: A 3-Step Fix That Doesn't Need an Ergonomic Chair"
+    keyword_cluster: ["shoulder knot", "trapezius pain", "office workers", "desk posture"]
+    brief: "High-volume search. The right shoulder/upper-trap knot office workers all develop. Why it's there (mouse-arm + breath holding), the trigger point self-release sequence, and why the chair isn't the actual problem."
+    target_intent: informational
+    local_anchor: "Whether you're commuting to St. Louis or working from a home office in Union, the knot is the same."
+    status: pending
+
+  - slug: massage-therapy-in-union-mo-what-to-actually-look-for
+    title: "Massage Therapy in Union, MO: What to Actually Look For (From Someone Who's Been on Both Sides of the Table)"
+    keyword_cluster: ["massage therapy Union MO", "massage therapist Franklin County", "best massage near me"]
+    brief: "Local intent piece — direct local SEO. Don't bash competitors. Explain what separates a useful massage from a forgettable one: assessment first, communication during, written aftercare. Mention training (LMT + Reiki + Life Coach combo) without bragging."
+    target_intent: commercial_local
+    local_anchor: "Union, MO with mentions of Washington, Sullivan, Pacific — anyone within 30 minutes."
+    status: pending
+
+  - slug: deep-tissue-vs-sports-massage-which-do-you-actually-need
+    title: "Deep Tissue vs Sports Massage: Which One Do You Actually Need?"
+    keyword_cluster: ["deep tissue massage", "sports massage", "differences", "which to book"]
+    brief: "Service-clarification piece. Define each properly (sports = movement-pattern-focused, deep tissue = layer-depth-focused), when each one wins, when they overlap, why booking the wrong one wastes your money."
+    target_intent: commercial_informational
+    status: pending
+
+  - slug: why-your-headaches-start-in-your-shoulders
+    title: "Why Your Headaches Start in Your Shoulders (and Why Your Aspirin Isn't Cutting It)"
+    keyword_cluster: ["tension headaches", "headache shoulder connection", "neck headaches"]
+    brief: "Pain-driven, very high volume. The trapezius/SCM/suboccipital chain. How referred pain works. The three at-home tricks (chin tucks, suboccipital release with a tennis ball, breath reset)."
+    target_intent: informational
+    status: pending
+
+  - slug: plantar-fasciitis-relief-without-shoes-that-cost-200
+    title: "Plantar Fasciitis Relief Without $200 Shoes"
+    keyword_cluster: ["plantar fasciitis", "foot pain", "heel pain", "calf tightness"]
+    brief: "Pain-driven, anti-luxury angle. The calf-foot connection most podiatrists undersell. Lacrosse ball under foot, calf stretching with cold, why the morning floor walk hurts most."
+    target_intent: informational
+    status: pending
+
+  - slug: what-reiki-actually-is-and-isnt
+    title: "What Reiki Actually Is — and What It Isn't"
+    keyword_cluster: ["reiki", "energy work", "what is reiki", "reiki skeptic"]
+    brief: "Service intro for the skeptical reader. Don't sell the woo. Frame as nervous-system regulation + intentional touch + presence. What clients actually feel. Why it pairs well with massage."
+    target_intent: informational_local
+    status: pending
+
+  - slug: sciatica-or-piriformis-syndrome-how-to-tell
+    title: "Sciatica or Piriformis Syndrome? How to Tell the Difference (and Why It Matters)"
+    keyword_cluster: ["sciatica", "piriformis syndrome", "buttock pain", "leg pain"]
+    brief: "Differentiation piece, high search intent. Anatomy of the piriformis/sciatic-nerve overlap. The figure-4 test. Why your chiropractor isn't always wrong but isn't always right. When to book massage vs see a PT."
+    target_intent: informational
+    status: pending
+
+  - slug: the-5-minute-pre-bed-stretch-that-changes-your-sleep
+    title: "The 5-Minute Pre-Bed Stretch That Actually Changes Your Sleep"
+    keyword_cluster: ["bedtime stretches", "sleep stretches", "evening routine"]
+    brief: "Self-care, sleep-search overlap (massive search volume). The wind-down sequence: child's pose, supported reclining twist, legs-up-the-wall, slow nasal breathing. Why most stretching routines fail (they wake you up)."
+    target_intent: informational
+    status: pending
+
+  - slug: why-truckers-get-the-same-3-knots
+    title: "Why Truckers Get the Same 3 Knots — and What Finally Releases Them"
+    keyword_cluster: ["trucker neck pain", "long haul driver back", "driver fatigue"]
+    brief: "Demographic-specific. Missouri is a freight corridor — I-44, I-70. Right-leg gas-pedal hip, right-shoulder hand-on-wheel, low-back compressed-disc trio. Targeted release for each + on-the-road tweaks."
+    target_intent: informational_local
+    status: pending
+
+  - slug: massage-during-pregnancy-what-actually-helps
+    title: "Prenatal Massage: What Actually Helps (and What's Just Marketing)"
+    keyword_cluster: ["prenatal massage", "pregnancy massage", "pregnancy back pain"]
+    brief: "Niche but high-intent. Trimester-by-trimester what's safe + useful. Side-lying positioning. The areas to avoid + why. Why most spa prenatal is too gentle to actually help."
+    target_intent: informational_local
+    status: pending
+
+  - slug: post-haying-recovery-for-missouri-farmers
+    title: "Post-Hay-Season Recovery for Missouri Farmers"
+    keyword_cluster: ["farmer back pain", "haying", "agricultural injury", "Missouri farms"]
+    brief: "Local seasonal — late spring through summer. The lower-back / hamstring / forearm trio from bucking hay bales. Why ice-only doesn't work. What 90 minutes on the table actually does + the at-home maintenance between sessions."
+    target_intent: informational_local
+    status: pending
+
+  - slug: tmj-jaw-tension-the-massage-piece-most-dentists-miss
+    title: "TMJ and Jaw Tension: The Piece Most Dentists Miss"
+    keyword_cluster: ["TMJ", "jaw pain", "jaw tension", "teeth grinding"]
+    brief: "Niche but underserved. The masseter/temporalis/pterygoid trio. Intraoral massage explained (and de-mystified). Why a night guard alone often doesn't fix it. When to combine massage with dental care."
+    target_intent: informational
+    status: pending
+
+  - slug: frozen-shoulder-the-12-week-mistake-most-people-make
+    title: "Frozen Shoulder: The 12-Week Mistake Most People Make"
+    keyword_cluster: ["frozen shoulder", "adhesive capsulitis", "shoulder mobility"]
+    brief: "Frozen shoulder is a 6-18 month condition that most people inadvertently extend by 12+ weeks doing the wrong thing. The 3 phases (freezing/frozen/thawing). What massage helps in each phase. When you should NOT push range of motion."
+    target_intent: informational
+    status: pending
+
+  - slug: how-often-should-you-get-a-massage-honest-answer
+    title: "How Often Should You Get a Massage? An Honest Answer (No Upsell)"
+    keyword_cluster: ["massage frequency", "how often massage", "monthly massage"]
+    brief: "Trust-building piece. The honest answer by goal: maintenance (once a month), recovery (weekly for 4-6 weeks then taper), specific injury (twice a week for 2-3 weeks). What I tell my own clients vs what most spas push. No 'you NEED weekly' pressure."
+    target_intent: informational_commercial
+    status: pending
+
+  - slug: why-your-pre-race-massage-might-be-wrecking-your-run
+    title: "Why Your Pre-Race Massage Might Be Wrecking Your Run"
+    keyword_cluster: ["pre-race massage", "running recovery", "athletic massage timing"]
+    brief: "Athletes niche. The 48-hour rule for pre-event deep tissue. What pre-event massage should actually be (light, activating, NOT deep). Post-event timing (24-72 hours after). Why most runners book this backwards."
+    target_intent: informational
+    status: pending
+
+  - slug: the-stress-response-thats-stuck-in-your-jaw-and-fists
+    title: "The Stress Response That's Stuck in Your Jaw and Fists"
+    keyword_cluster: ["stress tension", "chronic stress body", "fight or flight"]
+    brief: "Stress-as-tension framing. The fight-or-flight residue — clenched jaw, fisted hands, hiked shoulders, shallow breath. Why a parked nervous system doesn't release itself. Reiki and bodywork as nervous-system regulation, plus the at-home reset (vagal toning, slow exhale, cold water on face)."
+    target_intent: informational
+    status: pending
+
+  - slug: cupping-therapy-explained-without-the-instagram-bruises
+    title: "Cupping Therapy, Explained — Without the Instagram Bruises"
+    keyword_cluster: ["cupping therapy", "cupping massage", "myofascial release"]
+    brief: "Cupping curiosity piece. Decoupling the technique from the bruise-photos. Static vs gliding cupping. When it's the right tool (chronic fascial restrictions, scar tissue) vs when it's overkill. What the marks actually mean and what they don't."
+    target_intent: informational
+    status: pending
+
+  - slug: best-self-massage-tools-under-25-bucks
+    title: "The Best Self-Massage Tools Under $25 (From Someone Who Owns Most of Them)"
+    keyword_cluster: ["self massage tools", "trigger point tools", "foam roller alternatives"]
+    brief: "Broad-appeal piece. Specific products: lacrosse ball, tennis ball, theracane, foam roller, peanut ball, cervical traction wedge. What each is best for. What to NOT buy (gimmicks). Why $200 percussion guns are mostly noise."
+    target_intent: commercial_informational
+    status: pending
+
+  - slug: what-12-years-on-the-table-taught-me-about-pain
+    title: "What 12+ Years on the Table Taught Me About Pain"
+    keyword_cluster: ["chronic pain", "pain perception", "massage philosophy"]
+    brief: "Personal authority piece. The three patterns that recur across thousands of sessions: 1) pain is usually downstream of something, 2) tissue holds story, 3) most chronic pain has a nervous-system piece. Less how-to, more why-this-work-matters. Anchors the brand."
+    target_intent: brand_authority
+    status: pending

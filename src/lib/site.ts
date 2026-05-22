@@ -39,7 +39,25 @@ export const site = {
     instagram: ""
   },
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://healinghandsbynate.com",
-  serviceArea: ["Union", "Washington", "Pacific", "St. Clair", "Sullivan", "Franklin County"]
+  serviceArea: [
+    "Union",
+    "Washington",
+    "Pacific",
+    "St. Clair",
+    "Sullivan",
+    "New Haven",
+    "Beaufort",
+    "Robertsville",
+    "Gerald",
+    "Owensville",
+    "Cuba",
+    "St. James",
+    "Rolla",
+    "Franklin County",
+    "Crawford County",
+    "Gasconade County",
+    "Warren County"
+  ]
 };
 
 export type Site = typeof site;
