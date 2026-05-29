@@ -33,7 +33,8 @@ topics:
     brief: "High-volume search. The right shoulder/upper-trap knot office workers all develop. Why it's there (mouse-arm + breath holding), the trigger point self-release sequence, and why the chair isn't the actual problem."
     target_intent: informational
     local_anchor: "Whether you're commuting to St. Louis or working from a home office in Union, the knot is the same."
-    status: pending
+    status: published
+    drafted_at: "2026-05-29T16:00:00Z"
 
   - slug: massage-therapy-in-union-mo-what-to-actually-look-for
     title: "Massage Therapy in Union, MO: What to Actually Look For (From Someone Who's Been on Both Sides of the Table)"
