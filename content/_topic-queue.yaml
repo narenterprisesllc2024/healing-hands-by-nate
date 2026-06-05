@@ -42,7 +42,8 @@ topics:
     brief: "Local intent piece — direct local SEO. Don't bash competitors. Explain what separates a useful massage from a forgettable one: assessment first, communication during, written aftercare. Mention training (LMT + Reiki + Life Coach combo) without bragging."
     target_intent: commercial_local
     local_anchor: "Union, MO with mentions of Washington, Sullivan, Pacific — anyone within 30 minutes."
-    status: pending
+    status: published
+    drafted_at: "2026-06-05T12:00:00Z"
 
   - slug: deep-tissue-vs-sports-massage-which-do-you-actually-need
     title: "Deep Tissue vs Sports Massage: Which One Do You Actually Need?"
