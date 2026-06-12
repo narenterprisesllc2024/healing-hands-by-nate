@@ -50,7 +50,8 @@ topics:
     keyword_cluster: ["deep tissue massage", "sports massage", "differences", "which to book"]
     brief: "Service-clarification piece. Define each properly (sports = movement-pattern-focused, deep tissue = layer-depth-focused), when each one wins, when they overlap, why booking the wrong one wastes your money."
     target_intent: commercial_informational
-    status: pending
+    status: published
+    drafted_at: "2026-06-12T16:00:00Z"
 
   - slug: why-your-headaches-start-in-your-shoulders
     title: "Why Your Headaches Start in Your Shoulders (and Why Your Aspirin Isn't Cutting It)"
