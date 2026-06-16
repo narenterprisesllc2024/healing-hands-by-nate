@@ -58,7 +58,8 @@ topics:
     keyword_cluster: ["tension headaches", "headache shoulder connection", "neck headaches"]
     brief: "Pain-driven, very high volume. The trapezius/SCM/suboccipital chain. How referred pain works. The three at-home tricks (chin tucks, suboccipital release with a tennis ball, breath reset)."
     target_intent: informational
-    status: pending
+    status: published
+    drafted_at: "2026-06-16T16:00:00Z"
 
   - slug: plantar-fasciitis-relief-without-shoes-that-cost-200
     title: "Plantar Fasciitis Relief Without $200 Shoes"
