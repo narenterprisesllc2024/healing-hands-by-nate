@@ -39,12 +39,12 @@ const tiers = [
     description:
       "One new between-sessions module every month, plus the full back-catalog. The same guidance I'd write on the back of a card after your session — productized so it's always there.",
     features: [
-      "1 new module per month (PDF + video)",
+      "1 new PDF module per month + companion workbook",
       "Full back-catalog access",
       "Stretches, protocols, and recovery sequences",
       "Cancel anytime"
     ],
-    href: "https://buy.stripe.com/8x2eVddof3gW0nQ3WEabK0a",
+    href: "https://ghost.mysoviai.com/#/portal/signup/6a2c281ada72f1000177e8a3/monthly",
     highlight: false
   },
   {
@@ -60,7 +60,7 @@ const tiers = [
       "2 touchpoints per month",
       "Cancel anytime"
     ],
-    href: "https://buy.stripe.com/28EdR94RJ18O1rU3WEabK0b",
+    href: "https://ghost.mysoviai.com/#/portal/signup/6a2c281bda72f1000177e8aa/monthly",
     highlight: true
   },
   {
@@ -76,7 +76,7 @@ const tiers = [
       "Quarterly long-form PDF deep cut (15-25 pages)",
       "Cancel anytime"
     ],
-    href: "https://buy.stripe.com/dRm8wP5VN6t89Yq8cUabK0c",
+    href: "https://ghost.mysoviai.com/#/portal/signup/6a2c281bda72f1000177e8b1/monthly",
     highlight: false
   }
 ];
@@ -88,7 +88,7 @@ const resetProgram = {
   description:
     "A structured 30-day between-sessions program. Four weekly themes — breath, neck and mid-back, hips and low back, sleep and wind-down. Daily 2-3 minute practices. At day 31, you can roll into Continuity for $9/mo to keep the momentum.",
   features: [
-    "30 daily practices (PDF + short video)",
+    "30 daily PDF practices + companion workbook",
     "4 themed weeks building on each other",
     "Self-paced — no live calls, no cohort pressure",
     "Day 31 optional transition to $9/mo Continuity"
@@ -112,6 +112,20 @@ export default function MembershipPage() {
             the same patterns. These memberships give you the between-session
             tools to hold what we built.
           </p>
+        </div>
+      </section>
+
+      {/* Early-member pricing notice */}
+      <section className="pb-10">
+        <div className="container-wide max-w-3xl">
+          <div className="rounded-2xl border border-bronze-500/30 bg-bronze-500/5 px-6 py-5 text-center">
+            <p className="text-sm leading-relaxed text-stone-700">
+              <span className="font-medium text-bronze-700">Founding-member pricing.</span>{" "}
+              Right now, every tier is PDF + companion workbook — built for self-directed
+              learning. Video walkthroughs ship in a later stage. When they do, prices go up.
+              Lock in today's pricing now and you keep it for as long as you stay subscribed.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -249,7 +263,7 @@ export default function MembershipPage() {
               {
                 step: "02",
                 title: "Get your first module",
-                body: "Each month, a new module lands — PDF guide plus a short video walkthrough. Stretches, recovery protocols, and honest context about what your body is doing and why."
+                body: "Each month, a new module lands — a written PDF guide with a companion workbook for the practices. Stretches, recovery protocols, and honest context about what your body is doing and why. Built for self-directed learning — read it, do it, come back to it."
               },
               {
                 step: "03",
@@ -314,7 +328,7 @@ export default function MembershipPage() {
               },
               {
                 q: "What format are the modules?",
-                a: "PDF guide (8-12 pages, printable) plus a short video walkthrough (5-10 min). You can read it, watch it, or both. The audio track from the video is available separately if you just want to listen."
+                a: "Written PDF guides (8-12 pages, printable) with a companion workbook for the practices, prompts, and trackers. Self-directed — read it, do the work, come back to it. Video walkthroughs are on the roadmap and will be added at a later stage; when that happens, prices go up. Lock in today's pricing now."
               },
               {
                 q: "Can I cancel anytime?",
