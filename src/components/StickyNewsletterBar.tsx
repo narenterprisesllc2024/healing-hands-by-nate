@@ -1,17 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const DISMISS_KEY = "hhbn:sticky-newsletter-dismissed-v1";
 const DISMISS_DAYS = 14;
 
 export default function StickyNewsletterBar() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
+  // Suppress on funnel pages — they need conversion focus, no distractions
+  const suppress = pathname?.startsWith("/go/") ?? false;
+
   useEffect(() => {
+    if (suppress) return;
     try {
       const raw = localStorage.getItem(DISMISS_KEY);
       if (!raw) {
@@ -66,6 +72,7 @@ export default function StickyNewsletterBar() {
     }
   }
 
+  if (suppress) return null;
   if (!open) return null;
 
   return (
