@@ -320,13 +320,15 @@ The fix: combine bodywork with daily mid-back mobility practice AND specific che
 
 ### "Can I just have you crack my back?"
 
-Sometimes. But not always.
+No. That's outside my scope of practice as a licensed massage therapist.
 
-Chiropractic-style adjustments can be useful for some mid-back restrictions. They can also be inappropriate for others — particularly when the issue is tissue restriction rather than joint mobility, or when there's structural asymmetry that adjustment won't address.
+Spinal adjustment and joint manipulation are chiropractic territory — not bodywork. LMTs work on tissue: muscles, fascia, connective tissue. We don't adjust joints. That's a hard line, drawn by licensing and clinical scope. If someone offering you a "massage" tries to crack your back, that's a problem — they're working outside their scope.
 
-I do some manual mobilization (similar to gentle chiropractic adjustments) but I'm not a chiropractor. For specific joint issues, a good chiropractor working alongside bodywork is often the best combination.
+What I CAN do is release the muscle and fascial tension that's often the actual cause of feeling like "something needs to be cracked." Most of the time, what people interpret as "needing an adjustment" is really tight tissue restricting normal joint motion. Release the tissue, the joint often moves freely on its own without anyone manipulating it.
 
-The fix: know what you actually need. Sometimes that's bodywork. Sometimes that's chiropractic. Often that's both.
+If you do need actual joint work — and sometimes that's the right call — that's a referral to a chiropractor. The two professions complement each other well: I handle the tissue side, they handle the joint side. Many clients benefit from working with both.
+
+The fix: know what bodywork is and isn't. If you want spinal manipulation, see a chiropractor. If you want soft-tissue work, see me. Both are valid. They're different professions for a reason.
 
 ---
 
