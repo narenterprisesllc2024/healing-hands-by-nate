@@ -15,12 +15,31 @@ export const metadata: Metadata = {
   }
 };
 
-const tiers = [
+type Tier = {
+  name: string;
+  slug: string;
+  monthly_price: string;
+  monthly_interval: string;
+  yearly_price: string | null;
+  yearly_interval: string | null;
+  yearly_savings: string | null;
+  description: string;
+  features: string[];
+  monthly_href: string | null;
+  yearly_href: string | null;
+  cta: null | "form";
+  highlight: boolean;
+};
+
+const tiers: Tier[] = [
   {
     name: "Friday Five",
     slug: "free",
-    price: "Free",
-    interval: "",
+    monthly_price: "Free",
+    monthly_interval: "",
+    yearly_price: null,
+    yearly_interval: null,
+    yearly_savings: null,
     description:
       "Five bullets every Friday. Stretches, tools, honest notes from the table. No fluff.",
     features: [
@@ -28,14 +47,19 @@ const tiers = [
       "Blog post highlights",
       "Seasonal self-care notes"
     ],
-    cta: null, // handled by inline newsletter form
+    monthly_href: null,
+    yearly_href: null,
+    cta: "form",
     highlight: false
   },
   {
     name: "Continuity",
     slug: "continuity",
-    price: "$9",
-    interval: "/mo",
+    monthly_price: "$9",
+    monthly_interval: "/mo",
+    yearly_price: "$97",
+    yearly_interval: "/yr",
+    yearly_savings: "save $11",
     description:
       "One new between-sessions module every month, plus the full back-catalog. The same guidance I'd write on the back of a card after your session — productized so it's always there.",
     features: [
@@ -44,14 +68,21 @@ const tiers = [
       "Stretches, protocols, and recovery sequences",
       "Cancel anytime"
     ],
-    href: "https://ghost.mysoviai.com/#/portal/signup/6a2c281ada72f1000177e8a3/monthly",
+    monthly_href:
+      "https://ghost.mysoviai.com/#/portal/signup/6a2c281ada72f1000177e8a3/monthly",
+    yearly_href:
+      "https://ghost.mysoviai.com/#/portal/signup/6a2c281ada72f1000177e8a3/yearly",
+    cta: null,
     highlight: false
   },
   {
     name: "Between Sessions",
     slug: "between-sessions",
-    price: "$19",
-    interval: "/mo",
+    monthly_price: "$19",
+    monthly_interval: "/mo",
+    yearly_price: "$197",
+    yearly_interval: "/yr",
+    yearly_savings: "save $31",
     description:
       "Everything in Continuity, plus a monthly bonus protocol — seasonal recovery sequences timed to what your body is actually dealing with right now.",
     features: [
@@ -60,23 +91,34 @@ const tiers = [
       "2 touchpoints per month",
       "Cancel anytime"
     ],
-    href: "https://ghost.mysoviai.com/#/portal/signup/6a2c281bda72f1000177e8aa/monthly",
+    monthly_href:
+      "https://ghost.mysoviai.com/#/portal/signup/6a2c281bda72f1000177e8aa/monthly",
+    yearly_href:
+      "https://ghost.mysoviai.com/#/portal/signup/6a2c281bda72f1000177e8aa/yearly",
+    cta: null,
     highlight: true
   },
   {
     name: "Inner Circle",
     slug: "inner-circle",
-    price: "$39",
-    interval: "/mo",
+    monthly_price: "$39",
+    monthly_interval: "/mo",
+    yearly_price: "$397",
+    yearly_interval: "/yr",
+    yearly_savings: "save $71",
     description:
-      "Everything above, plus you can ask me questions and I'll answer them. Monthly async voice Q&A — I batch your questions and record honest answers. Quarterly long-form deep cuts.",
+      "Everything above, plus a monthly long-form deep cut — 15-20 page PDF exploring one body or nervous-system topic at depth, with companion workbook. Members can submit questions; recurring themes become future deep cuts.",
     features: [
       "Everything in Between Sessions",
-      "Monthly async voice Q&A from Nate",
-      "Quarterly long-form PDF deep cut (15-25 pages)",
+      "Monthly 15-20 page long-form deep cut PDF + workbook",
+      "Member question intake — themes become future deep cuts",
       "Cancel anytime"
     ],
-    href: "https://ghost.mysoviai.com/#/portal/signup/6a2c281bda72f1000177e8b1/monthly",
+    monthly_href:
+      "https://ghost.mysoviai.com/#/portal/signup/6a2c281bda72f1000177e8b1/monthly",
+    yearly_href:
+      "https://ghost.mysoviai.com/#/portal/signup/6a2c281bda72f1000177e8b1/yearly",
+    cta: null,
     highlight: false
   }
 ];
@@ -152,12 +194,22 @@ export default function MembershipPage() {
                 </h3>
                 <p className="mt-3 flex items-baseline gap-1">
                   <span className="font-serif text-3xl tracking-tightest">
-                    {tier.price}
+                    {tier.monthly_price}
                   </span>
-                  {tier.interval && (
-                    <span className="text-sm text-stone-500">{tier.interval}</span>
+                  {tier.monthly_interval && (
+                    <span className="text-sm text-stone-500">{tier.monthly_interval}</span>
                   )}
                 </p>
+                {tier.yearly_price && (
+                  <p className="mt-1 text-xs text-stone-500">
+                    or{" "}
+                    <span className="font-medium text-stone-700">
+                      {tier.yearly_price}
+                      {tier.yearly_interval}
+                    </span>{" "}
+                    — <span className="text-bronze-600">{tier.yearly_savings}</span>
+                  </p>
+                )}
                 <p className="mt-4 text-sm leading-relaxed text-stone-600">
                   {tier.description}
                 </p>
@@ -171,24 +223,37 @@ export default function MembershipPage() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-8">
-                  {tier.cta === null ? (
+                <div className="mt-8 space-y-3">
+                  {tier.cta === "form" ? (
                     <NewsletterForm
                       variant="leadMagnet"
                       source="membership-free"
                       cta="Join free"
                     />
                   ) : (
-                    <a
-                      href={tier.href}
-                      className={`btn w-full ${
-                        tier.highlight
-                          ? "bg-bronze-500 text-cream-50 hover:bg-bronze-600"
-                          : "btn-primary"
-                      }`}
-                    >
-                      Start {tier.name}
-                    </a>
+                    <>
+                      {tier.monthly_href && (
+                        <a
+                          href={tier.monthly_href}
+                          className={`btn w-full ${
+                            tier.highlight
+                              ? "bg-bronze-500 text-cream-50 hover:bg-bronze-600"
+                              : "btn-primary"
+                          }`}
+                        >
+                          Start monthly — {tier.monthly_price}
+                          {tier.monthly_interval}
+                        </a>
+                      )}
+                      {tier.yearly_href && (
+                        <a
+                          href={tier.yearly_href}
+                          className="block text-center text-xs text-stone-500 underline underline-offset-2 hover:text-bronze-600"
+                        >
+                          Or pay yearly — {tier.yearly_price} ({tier.yearly_savings})
+                        </a>
+                      )}
+                    </>
                   )}
                 </div>
               </div>
@@ -340,7 +405,7 @@ export default function MembershipPage() {
               },
               {
                 q: "What's the Inner Circle?",
-                a: "Everything in Between Sessions, plus you can submit questions and I'll answer them in a monthly voice recording. You also get a quarterly deep-cut PDF — 15-25 pages on a single topic, researched and written from the table."
+                a: "Everything in Between Sessions, plus a monthly long-form deep cut — a 15-20 page written PDF + companion workbook exploring one body or nervous-system topic at depth. You can submit questions through your member portal; recurring themes shape future deep cuts. Monthly or yearly billing — pay yearly and save $71."
               },
               {
                 q: "What happens after the 30-Day Reset ends?",
