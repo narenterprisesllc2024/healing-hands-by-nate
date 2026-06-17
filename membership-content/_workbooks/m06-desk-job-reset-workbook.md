@@ -26,7 +26,7 @@ Print it out. Keep it on your desk. Fill it in over the next 7 days. Bring it to
 
 ---
 
-## Part 1 — Where You Are Today
+## Where You Are Today
 
 Before you start the practice, take 5 minutes to honestly assess where you're at. No grading. Just data.
 
@@ -70,7 +70,7 @@ Hip extension (standing tall)    [____]
 
 ---
 
-## Part 2 — Reflection Prompts
+## Reflection Prompts
 
 Answer with whatever comes to mind first. There are no wrong answers.
 
@@ -103,7 +103,7 @@ _______________________________________________________________
 
 ---
 
-## Part 3 — 7-Day Desk-Posture Tracker
+## 7-Day Desk-Posture Tracker
 
 For the next week, check in with yourself three times each workday. Mark where your body is right now.
 
@@ -196,7 +196,7 @@ For the next week, check in with yourself three times each workday. Mark where y
 
 ---
 
-## Part 4 — End-of-Week Reflection
+## End-of-Week Reflection
 
 After your 7 days, take 10 minutes to look back at what you wrote.
 
