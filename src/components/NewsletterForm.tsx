@@ -8,6 +8,7 @@ type Props = {
   heading?: string;
   body?: string;
   cta?: string;
+  stacked?: boolean;
 };
 
 export default function NewsletterForm({
@@ -15,7 +16,8 @@ export default function NewsletterForm({
   source = "newsletter",
   heading = "Stay close to the work",
   body = "Occasional notes on bodywork, breath, recovery, and the kind of self-care that actually changes things.",
-  cta = "Subscribe"
+  cta = "Subscribe",
+  stacked = false
 }: Props) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -44,7 +46,7 @@ export default function NewsletterForm({
   if (variant === "leadMagnet") {
     return (
       <form onSubmit={onSubmit} className="space-y-3">
-        <div className="flex flex-col gap-3 sm:flex-row">
+        <div className={`flex flex-col gap-3 ${stacked ? "" : "sm:flex-row"}`}>
           <input
             type="email"
             required
@@ -57,7 +59,7 @@ export default function NewsletterForm({
           <button
             type="submit"
             disabled={status === "loading"}
-            className="btn-primary disabled:opacity-60"
+            className={`btn-primary disabled:opacity-60 ${stacked ? "w-full" : ""}`}
           >
             {status === "loading" ? "Sending..." : cta}
           </button>

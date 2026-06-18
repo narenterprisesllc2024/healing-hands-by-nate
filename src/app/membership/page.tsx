@@ -229,6 +229,7 @@ export default function MembershipPage() {
                       variant="leadMagnet"
                       source="membership-free"
                       cta="Join free"
+                      stacked
                     />
                   ) : (
                     <>
