@@ -1,49 +1,45 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { services, getService } from "@/lib/services";
+import { conditions, getCondition } from "@/lib/conditions";
 import { site } from "@/lib/site";
-import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/seo";
+import { faqSchema, breadcrumbSchema } from "@/lib/seo";
 import BookingCTA from "@/components/BookingCTA";
 
 type Params = { slug: string };
 
 export function generateStaticParams() {
-  return services.map((s) => ({ slug: s.slug }));
+  return conditions.map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-  const s = getService(params.slug);
-  if (!s) return {};
-  const url = `${site.url}/services/${s.slug}`;
+  const c = getCondition(params.slug);
+  if (!c) return {};
+  const url = `${site.url}/conditions/${c.slug}`;
   return {
-    title: { absolute: s.metaTitle },
-    description: s.metaDescription,
+    title: { absolute: c.metaTitle },
+    description: c.metaDescription,
     alternates: { canonical: url },
     openGraph: {
-      title: s.metaTitle,
-      description: s.metaDescription,
+      title: c.metaTitle,
+      description: c.metaDescription,
       url,
       type: "article"
     }
   };
 }
 
-export default function ServicePage({ params }: { params: Params }) {
-  const s = getService(params.slug);
-  if (!s) notFound();
+export default function ConditionPage({ params }: { params: Params }) {
+  const c = getCondition(params.slug);
+  if (!c) notFound();
 
-  const others = services.filter((sv) => sv.slug !== s.slug).slice(0, 3);
+  const others = conditions.filter((co) => co.slug !== c.slug).slice(0, 3);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema(s.slug)) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(s.faqs)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(c.faqs)) }}
       />
       <script
         type="application/ld+json"
@@ -51,8 +47,8 @@ export default function ServicePage({ params }: { params: Params }) {
           __html: JSON.stringify(
             breadcrumbSchema([
               { name: "Home", url: site.url },
-              { name: "Services", url: `${site.url}/services` },
-              { name: s.name, url: `${site.url}/services/${s.slug}` }
+              { name: "Conditions", url: `${site.url}/conditions` },
+              { name: c.name, url: `${site.url}/conditions/${c.slug}` }
             ])
           )
         }}
@@ -63,76 +59,95 @@ export default function ServicePage({ params }: { params: Params }) {
           <nav className="text-sm text-stone-500" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-stone-700">Home</Link>
             <span className="mx-2">/</span>
-            <Link href="/services" className="hover:text-stone-700">Services</Link>
+            <Link href="/conditions" className="hover:text-stone-700">Conditions</Link>
             <span className="mx-2">/</span>
-            <span className="text-stone-700">{s.name}</span>
+            <span className="text-stone-700">{c.name}</span>
           </nav>
-          <p className="eyebrow mt-8">{s.duration}</p>
-          <h1 className="display mt-3 max-w-3xl">{s.name}</h1>
-          <p className="mt-5 max-w-prose text-lg italic text-bronze-500">{s.tagline}</p>
+          <p className="eyebrow mt-8">Get help with</p>
+          <h1 className="display mt-3 max-w-3xl">{c.name}</h1>
+          <p className="mt-5 max-w-prose text-lg italic text-bronze-500">{c.tagline}</p>
         </header>
 
         <div className="container-wide grid gap-12 pb-16 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <div className="prose-warm text-base lg:text-lg">
-              <p>{s.intro}</p>
+              <p>{c.intro}</p>
             </div>
 
             <section className="mt-14">
               <h2 className="font-serif text-2xl tracking-tightest text-stone-900">
-                What it helps with
+                Why it happens
               </h2>
               <ul className="mt-5 space-y-2.5 text-stone-700">
-                {s.benefits.map((b) => (
-                  <li key={b} className="flex gap-3">
+                {c.whyItHappens.map((w, i) => (
+                  <li key={i} className="flex gap-3">
                     <span className="text-bronze-600">·</span>
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            <section className="mt-14">
-              <h2 className="font-serif text-2xl tracking-tightest text-stone-900">
-                Especially good for
-              </h2>
-              <ul className="mt-5 grid gap-2.5 text-stone-700 sm:grid-cols-2">
-                {s.goodFor.map((g) => (
-                  <li key={g} className="flex gap-3">
-                    <span className="text-bronze-600">·</span>
-                    <span>{g}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            <section className="mt-14">
-              <h2 className="font-serif text-2xl tracking-tightest text-stone-900">
-                What to expect
-              </h2>
-              <ol className="mt-5 space-y-3 text-stone-700">
-                {s.whatToExpect.map((w, i) => (
-                  <li key={i} className="flex gap-4">
-                    <span className="font-serif text-xl tracking-tightest text-bronze-600">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
                     <span>{w}</span>
                   </li>
                 ))}
-              </ol>
+              </ul>
             </section>
 
-            {s.faqs.length > 0 && (
+            <section className="mt-14">
+              <h2 className="font-serif text-2xl tracking-tightest text-stone-900">
+                What helps
+              </h2>
+              <div className="mt-5 space-y-5">
+                {c.whatHelps.map((m, i) => (
+                  <div key={i} className="rounded-2xl border border-stone-900/10 bg-cream-50/50 p-5">
+                    <Link href={`/services/${m.slug}`} className="font-serif text-lg tracking-tightest text-stone-900 hover:text-bronze-600">
+                      {m.modality} →
+                    </Link>
+                    <p className="mt-2 text-stone-700">{m.why}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section className="mt-14">
+              <h2 className="font-serif text-2xl tracking-tightest text-stone-900">
+                Try first at home
+              </h2>
+              <ul className="mt-5 space-y-2.5 text-stone-700">
+                {c.selfCareFirst.map((s, i) => (
+                  <li key={i} className="flex gap-3">
+                    <span className="text-bronze-600">·</span>
+                    <span>{s}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section className="mt-14">
+              <h2 className="font-serif text-2xl tracking-tightest text-stone-900">
+                When to book a session
+              </h2>
+              <ul className="mt-5 space-y-2.5 text-stone-700">
+                {c.whenToCallProfessional.map((w, i) => (
+                  <li key={i} className="flex gap-3">
+                    <span className="text-bronze-600">·</span>
+                    <span>{w}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section className="mt-14 rounded-2xl border border-stone-900/10 bg-cream-100/60 p-6">
+              <h2 className="font-serif text-xl tracking-tightest text-stone-900">
+                Straight talk: when this isn't my work
+              </h2>
+              <p className="mt-3 text-stone-700">{c.whenToReferOut}</p>
+            </section>
+
+            {c.faqs.length > 0 && (
               <section className="mt-14">
                 <h2 className="font-serif text-2xl tracking-tightest text-stone-900">
                   Common questions
                 </h2>
                 <div className="mt-5 space-y-6">
-                  {s.faqs.map((f, i) => (
+                  {c.faqs.map((f, i) => (
                     <div key={i}>
-                      <h3 className="font-serif text-lg tracking-tightest text-stone-900">
-                        {f.q}
-                      </h3>
+                      <h3 className="font-serif text-lg tracking-tightest text-stone-900">{f.q}</h3>
                       <p className="mt-2 text-stone-700">{f.a}</p>
                     </div>
                   ))}
@@ -144,18 +159,15 @@ export default function ServicePage({ params }: { params: Params }) {
           <aside className="lg:col-span-5">
             <div className="sticky top-28 space-y-6">
               <BookingCTA
-                heading={`Book a ${s.shortName} session`}
-                body={`${s.duration}. Booking through Vagaro at ${site.contact.locatedAt}.`}
+                heading={`Book a session for ${c.shortName.toLowerCase()}`}
+                body={`60 or 90 minutes. Booking through Vagaro at ${site.contact.locatedAt}.`}
               />
               <div className="rounded-2xl border border-stone-900/10 bg-cream-50/60 p-7">
-                <p className="eyebrow">Other services</p>
+                <p className="eyebrow">Other things I help with</p>
                 <ul className="mt-4 space-y-3">
                   {others.map((o) => (
                     <li key={o.slug}>
-                      <Link
-                        href={`/services/${o.slug}`}
-                        className="group flex items-center justify-between"
-                      >
+                      <Link href={`/conditions/${o.slug}`} className="group flex items-center justify-between">
                         <span className="font-serif text-lg tracking-tightest text-stone-900 group-hover:text-bronze-600">
                           {o.name}
                         </span>
@@ -164,12 +176,6 @@ export default function ServicePage({ params }: { params: Params }) {
                     </li>
                   ))}
                 </ul>
-                <Link
-                  href="/services"
-                  className="mt-5 inline-flex text-sm font-medium text-bronze-600 hover:text-bronze-700"
-                >
-                  See all services →
-                </Link>
               </div>
             </div>
           </aside>
