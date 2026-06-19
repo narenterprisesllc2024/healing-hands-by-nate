@@ -66,7 +66,8 @@ topics:
     keyword_cluster: ["plantar fasciitis", "foot pain", "heel pain", "calf tightness"]
     brief: "Pain-driven, anti-luxury angle. The calf-foot connection most podiatrists undersell. Lacrosse ball under foot, calf stretching with cold, why the morning floor walk hurts most."
     target_intent: informational
-    status: pending
+    status: published
+    drafted_at: "2026-06-19T16:00:00Z"
 
   - slug: what-reiki-actually-is-and-isnt
     title: "What Reiki Actually Is — and What It Isn't"
