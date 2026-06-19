@@ -2,17 +2,22 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { site } from "@/lib/site";
+import { personSchema } from "@/lib/seo";
 import BookingCTA from "@/components/BookingCTA";
 
 export const metadata: Metadata = {
-  title: `About ${site.practitioner.firstName} — ${site.practitioner.fullTitle}`,
-  description: `${site.practitioner.yearsExperience}+ years as a Licensed Massage Therapist, Reiki Master, and Certified Life Coach in Union, Missouri. Meet Nate and learn how he works.`,
+  title: { absolute: `About Nate Ratcliff, LMT — ${site.name}` },
+  description: `${site.practitioner.yearsExperience}+ years as a Licensed Massage Therapist, Reiki Master, and Certified Life Coach in Union, Missouri. How a severe case of Tourette's syndrome shaped Nate's path into bodywork.`,
   alternates: { canonical: `${site.url}/about` }
 };
 
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema()) }}
+      />
       <section className="container-wide py-20 lg:py-28">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
@@ -39,6 +44,42 @@ export default function AboutPage() {
                 long enough to know that the most powerful thing on any given day is
                 rarely the fanciest tool in the kit.
               </p>
+
+              <h2 className="font-serif text-2xl tracking-tightest text-stone-900">
+                Why I do this work
+              </h2>
+              <p>
+                At a young age I was diagnosed with Tourette's syndrome — one of the
+                most severe cases the doctors had seen at the time. The muscle-tic
+                variant. My body twitched violently. My muscles stayed in chronic fatigue
+                and excruciating pain. There were nights I cried myself to sleep. And
+                other nights my mom would sit beside me, massaging my muscles until they
+                finally calmed enough for me to rest. That was the first time bodywork
+                meant something to me — it was the only thing that helped.
+              </p>
+              <p>
+                In high school I started working with a chiropractor and a homeopathic
+                doctor who changed my life. Before that, I couldn't function. The
+                twitching was so severe that simple tasks felt impossible. Over four
+                years of consistent, natural care, I went from non-functional and in
+                massive pain to fully functional and pain-free — and it stayed gone.
+                That was the turning point. Allopathic medicine had failed me. Holistic,
+                natural, and energetic medicine succeeded. That's the field I wanted to
+                spend my life in — the kind that finds the root cause and actually
+                fixes the thing.
+              </p>
+              <p>
+                That's why I became a massage therapist. Because I've walked the walk.
+                I've lived inside a body that wouldn't cooperate. I know what it feels
+                like to be in pain you can't shake, to be exhausted by your own muscles,
+                to search for relief and not find it. When clients lie down on my table,
+                they're met by someone who understands muscle pain and nervous-system
+                overwhelm from the inside — not just from a textbook.
+              </p>
+
+              <h2 className="font-serif text-2xl tracking-tightest text-stone-900">
+                How the practice grew
+              </h2>
               <p>
                 I started in massage. Swedish, deep tissue, the standard track. Within a
                 couple years I realized that for a lot of clients, the muscle was just

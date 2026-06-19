@@ -36,7 +36,8 @@ export const site = {
   socials: {
     google: "",
     facebook: "",
-    instagram: ""
+    instagram: "",
+    vagaro: "https://www.vagaro.com/essencesalonandspallc"
   },
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://healinghandsbynate.com",
   serviceArea: [
