@@ -74,7 +74,8 @@ topics:
     keyword_cluster: ["reiki", "energy work", "what is reiki", "reiki skeptic"]
     brief: "Service intro for the skeptical reader. Don't sell the woo. Frame as nervous-system regulation + intentional touch + presence. What clients actually feel. Why it pairs well with massage."
     target_intent: informational_local
-    status: pending
+    status: published
+    drafted_at: "2026-06-23T16:00:00Z"
 
   - slug: sciatica-or-piriformis-syndrome-how-to-tell
     title: "Sciatica or Piriformis Syndrome? How to Tell the Difference (and Why It Matters)"
