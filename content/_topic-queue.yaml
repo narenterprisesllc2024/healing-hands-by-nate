@@ -82,7 +82,8 @@ topics:
     keyword_cluster: ["sciatica", "piriformis syndrome", "buttock pain", "leg pain"]
     brief: "Differentiation piece, high search intent. Anatomy of the piriformis/sciatic-nerve overlap. The figure-4 test. Why your chiropractor isn't always wrong but isn't always right. When to book massage vs see a PT."
     target_intent: informational
-    status: pending
+    status: published
+    drafted_at: "2026-06-26T16:00:00Z"
 
   - slug: the-5-minute-pre-bed-stretch-that-changes-your-sleep
     title: "The 5-Minute Pre-Bed Stretch That Actually Changes Your Sleep"
