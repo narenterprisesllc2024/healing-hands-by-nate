@@ -63,14 +63,7 @@ echo "[auto-fb-post] url:     $URL"
 
 # Generate the branded card
 "$PROJECT/scripts/make-fb-card.sh" "$SLUG" "$TITLE"
-CARD_URL="https://healinghandsbynate.com/blog-cards/$SLUG.png"
-
-# Compose the Facebook caption — title, blank line, excerpt, blank line, link
-CAPTION=$(printf '%s\n\n%s\n\n%s' "$TITLE" "$EXCERPT" "$URL")
-
-# Schedule for 2 hours from now in UTC ISO format
-PUBLISH_AT=$(date -u -d "+2 hours" +%Y-%m-%dT%H:%M:%S.000Z)
-echo "[auto-fb-post] publish_at: $PUBLISH_AT"
+CARD_PATH="$PROJECT/public/blog-cards/$SLUG.png"
 
 # Resolve Postiz API key
 POSTIZ_KEY=$(grep -E "^POSTIZ_API_KEY=" /opt/aionui/.env | cut -d= -f2-)
@@ -79,20 +72,50 @@ if [ -z "$POSTIZ_KEY" ]; then
   exit 1
 fi
 
-# Build the JSON payload
-PAYLOAD=$(python3 -c "
-import json, sys, os
+# Upload the card to Postiz to get an image ID we can reference in the post
+UPLOAD_RESP=$(curl -sS -X POST "$POSTIZ_BASE/api/public/v1/upload" \
+  -H "Authorization: $POSTIZ_KEY" \
+  -F "file=@$CARD_PATH" 2>&1)
+echo "[auto-fb-post] upload response: $UPLOAD_RESP"
+CARD_ID=$(echo "$UPLOAD_RESP" | python3 -c "import sys,json; print(json.load(sys.stdin).get('id',''))" 2>/dev/null)
+CARD_PATH_URL=$(echo "$UPLOAD_RESP" | python3 -c "import sys,json; print(json.load(sys.stdin).get('path',''))" 2>/dev/null)
+if [ -z "$CARD_ID" ] || [ -z "$CARD_PATH_URL" ]; then
+  echo "[auto-fb-post] FAIL: upload did not return id+path"
+  exit 1
+fi
+echo "[auto-fb-post] uploaded card id: $CARD_ID  path: $CARD_PATH_URL"
+
+# Compose the Facebook caption — title, blank line, excerpt, blank line, link
+CAPTION=$(printf '%s\n\n%s\n\n%s' "$TITLE" "$EXCERPT" "$URL")
+
+# Schedule for 2 hours from now in UTC ISO format
+PUBLISH_AT=$(date -u -d "+2 hours" +%Y-%m-%dT%H:%M:%S.000Z)
+echo "[auto-fb-post] publish_at: $PUBLISH_AT"
+
+# Build the JSON payload (export vars so the python heredoc sees them)
+export CAPTION PUBLISH_AT LMT_INTEGRATION_ID CARD_ID CARD_PATH_URL
+PAYLOAD=$(python3 <<'PY'
+import json, os
 payload = {
   'type': 'schedule',
   'date': os.environ['PUBLISH_AT'],
+  'shortLink': False,
+  'tags': [],
   'posts': [{
     'integration': {'id': os.environ['LMT_INTEGRATION_ID']},
-    'value': [{'content': os.environ['CAPTION'], 'image': [{'path': os.environ['CARD_URL']}]}],
-    'settings': {}
-  }]
+    'value': [{
+      'content': os.environ['CAPTION'],
+      'image': [{
+        'id': os.environ['CARD_ID'],
+        'path': os.environ['CARD_PATH_URL'],
+      }],
+    }],
+    'settings': {},
+  }],
 }
 print(json.dumps(payload))
-" CAPTION="$CAPTION" PUBLISH_AT="$PUBLISH_AT" LMT_INTEGRATION_ID="$LMT_INTEGRATION_ID" CARD_URL="$CARD_URL")
+PY
+)
 
 echo "[auto-fb-post] payload preview: $(echo "$PAYLOAD" | head -c 300)..."
 
