@@ -53,8 +53,15 @@ fi
 SLUG=$(basename "$NEW_FILE" .md)
 echo "[auto-blog] new article: $SLUG"
 
-# Commit + push
+# Generate the branded Facebook card so it ships in the same deploy
+TITLE=$(awk '/^---$/{c++; next} c==1 && /^title:/{sub(/^title:[[:space:]]*/,""); gsub(/^"|"$/,""); print; exit}' "$NEW_FILE")
+if [ -n "$TITLE" ]; then
+  "$PROJECT/scripts/make-fb-card.sh" "$SLUG" "$TITLE" || echo "[auto-blog] card gen failed (non-fatal)"
+fi
+
+# Commit + push (include blog-cards/ if any new card was generated)
 git add content/blog/ content/_topic-queue.yaml
+git add public/blog-cards/ 2>/dev/null || true
 git commit -m "Auto-publish: $SLUG" >/dev/null
 git push origin main
 
@@ -65,3 +72,6 @@ DEPLOY_RESP=$(curl -fsS -X POST "$COOLIFY_URL/deploy?uuid=j3z7ypop2frhizj7ebj1xb
   -H "Authorization: Bearer $COOLIFY_TOKEN")
 echo "[auto-blog] coolify deploy response: $DEPLOY_RESP"
 echo "[auto-blog] published $SLUG"
+
+# Schedule the Facebook post 2h out (non-fatal — blog publish stands even if FB fails)
+"$PROJECT/scripts/auto-fb-post.sh" "$SLUG" || echo "[auto-blog] FB post scheduling failed (non-fatal)"
