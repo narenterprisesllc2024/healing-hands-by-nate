@@ -90,7 +90,8 @@ topics:
     keyword_cluster: ["bedtime stretches", "sleep stretches", "evening routine"]
     brief: "Self-care, sleep-search overlap (massive search volume). The wind-down sequence: child's pose, supported reclining twist, legs-up-the-wall, slow nasal breathing. Why most stretching routines fail (they wake you up)."
     target_intent: informational
-    status: pending
+    status: published
+    drafted_at: "2026-06-30T06:00:00Z"
 
   - slug: why-truckers-get-the-same-3-knots
     title: "Why Truckers Get the Same 3 Knots — and What Finally Releases Them"
