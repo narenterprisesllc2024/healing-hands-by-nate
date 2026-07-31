@@ -98,7 +98,8 @@ topics:
     keyword_cluster: ["trucker neck pain", "long haul driver back", "driver fatigue"]
     brief: "Demographic-specific. Missouri is a freight corridor — I-44, I-70. Right-leg gas-pedal hip, right-shoulder hand-on-wheel, low-back compressed-disc trio. Targeted release for each + on-the-road tweaks."
     target_intent: informational_local
-    status: pending
+    status: published
+    drafted_at: "2026-07-31T06:00:00Z"
 
   - slug: massage-during-pregnancy-what-actually-helps
     title: "Prenatal Massage: What Actually Helps (and What's Just Marketing)"
