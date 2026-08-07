@@ -114,7 +114,8 @@ topics:
     keyword_cluster: ["farmer back pain", "haying", "agricultural injury", "Missouri farms"]
     brief: "Local seasonal — late spring through summer. The lower-back / hamstring / forearm trio from bucking hay bales. Why ice-only doesn't work. What 90 minutes on the table actually does + the at-home maintenance between sessions."
     target_intent: informational_local
-    status: pending
+    status: published
+    drafted_at: "2026-08-07T06:00:00Z"
 
   - slug: tmj-jaw-tension-the-massage-piece-most-dentists-miss
     title: "TMJ and Jaw Tension: The Piece Most Dentists Miss"
