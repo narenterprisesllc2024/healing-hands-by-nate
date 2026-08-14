@@ -130,7 +130,8 @@ topics:
     keyword_cluster: ["frozen shoulder", "adhesive capsulitis", "shoulder mobility"]
     brief: "Frozen shoulder is a 6-18 month condition that most people inadvertently extend by 12+ weeks doing the wrong thing. The 3 phases (freezing/frozen/thawing). What massage helps in each phase. When you should NOT push range of motion."
     target_intent: informational
-    status: pending
+    status: published
+    drafted_at: "2026-08-14T06:00:00Z"
 
   - slug: how-often-should-you-get-a-massage-honest-answer
     title: "How Often Should You Get a Massage? An Honest Answer (No Upsell)"
