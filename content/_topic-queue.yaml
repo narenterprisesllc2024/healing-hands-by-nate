@@ -138,7 +138,8 @@ topics:
     keyword_cluster: ["massage frequency", "how often massage", "monthly massage"]
     brief: "Trust-building piece. The honest answer by goal: maintenance (once a month), recovery (weekly for 4-6 weeks then taper), specific injury (twice a week for 2-3 weeks). What I tell my own clients vs what most spas push. No 'you NEED weekly' pressure."
     target_intent: informational_commercial
-    status: pending
+    status: published
+    drafted_at: "2026-08-18T06:00:00Z"
 
   - slug: why-your-pre-race-massage-might-be-wrecking-your-run
     title: "Why Your Pre-Race Massage Might Be Wrecking Your Run"
